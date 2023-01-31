@@ -1,11 +1,11 @@
 <template>
    <header class="header linear__bg">
-    <div class="logo padding-left">
-      <a href=""><img src="@/assets/img/logo.png" alt="" class="company__logo"></a> 
-        <span class="company__name">MovieBox</span>
-    </div>
-    <Search></Search>
-    <a href="" class="sigin">Sign In</a>
+      <div class="logo padding-left">
+        <a href=""><img src="@/assets/img/logo.png" alt="" class="company__logo"></a> 
+          <span class="company__name">MovieBox</span>
+      </div>
+      <Search @search-text-changed="search"></Search>
+      <a href="" class="sigin">Sign In</a>
    </header>
     
 </template>
@@ -44,6 +44,12 @@ export default {
   name: 'Header',
   components: {
     Search
-}}
+  },
+  methods: {
+    search(searchText){
+      this.$emit('search-text-changed', searchText)
+    }
+  }
+}
 
 </script>
