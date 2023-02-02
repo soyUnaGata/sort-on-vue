@@ -19,30 +19,7 @@
 </template>
 
 <style>
-    .has-content{
-        width: 150px;
-        max-width: 150px;
-        overflow: initial;
-        position: relative;
-    }
 
-    .scroll-list {
-        overflow: hidden;
-        overflow-y: scroll;
-        height: 200px;
-    }
-    .scroll-list::-webkit-scrollbar{
-        height: 10px;
-        width: 8px;
-    }
-    .scroll-list::-webkit-scrollbar-track{
-        background-color: transparent;   
-    }
-    .scroll-list::-webkit-scrollbar-thumb{
-        background-color: yellow;
-        height: 38px;
-        border-radius: 10px;
-    }
     .input__country-search{
         border: 1px solid white;
         background-color: transparent;
@@ -71,22 +48,6 @@
         cursor: pointer;
     }
 
-    .has-content:hover::after{
-        opacity: 1;
-        content: attr(data-titles);
-        position: absolute;
-        top: -35px;
-        left: 50%;
-        transform: translateX(-50%);
-        color: #fff;
-        background-color: transparent;
-        padding: 3px 5px;
-        white-space: nowrap;
-        transition: all .3s;
-        display:flex;
-        border-radius: 5px;
-        width: 200px;
-    }
 </style>
 <script>
 

@@ -1,13 +1,14 @@
 <template>
     <div class="select__genre">
-        <div class="title_headline select-button__style" v-on:click="select = !select">Genres</div>
-        <div class="selected_genres_buttons">
-            <span v-for="title in titleOfGenreSelected">{{ title }} 
-                <button class="remove_selected" v-on:click="removeSelectedGenre(title)">x</button>
-            </span>
-        </div>
-            <div class="list_of_genres" v-show="select" v-for="genre in genres">
-            <div class="genres" v-on:click="selectedGenre(genre)">{{ genre }}</div>
+        <div class="title_headline select-button__style" 
+        :class="{ 'has-content' : titleOfGenreSelected.length }" 
+        :data-titles="titleOfGenreSelected.join(', ')"
+         v-on:click="select = !select">
+         {{ formatedSelectionText || 'Genre'}}</div>
+            <div class="scroll-list" v-show="select">
+                <div class="list_of_genres" v-show="select" v-for="genre in genres">
+                <div class="genres" v-on:click="selectedGenre(genre)">{{ genre }}</div>
+            </div>
         </div>
     </div>    
 </template>
@@ -18,7 +19,11 @@
     font-size: 17px;
     color: black;
 }
-
+.list_of_genres {
+        margin-top: 10px;
+        cursor: pointer;
+        padding-right: 10px;
+}
 
 </style>
 
@@ -47,8 +52,18 @@ export default {
         clear(){
             this.titleOfGenreSelected = [];
             this.$emit('select-genre-changed', this.titleOfGenreSelected);
+        },
+        cutString(source){
+            return source.length > 10 ? (source.substring(0, 7) + '...') : source;
         }
     },
+    computed:{
+        formatedSelectionText(){
+            return this.titleOfGenreSelected.length 
+                ? this.cutString(this.titleOfGenreSelected.join(', '))
+                : ''
+        }
+    }
 
 }
 </script>
