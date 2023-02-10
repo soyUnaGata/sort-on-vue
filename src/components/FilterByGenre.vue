@@ -28,11 +28,13 @@
 </style>
 
 <script>
+import MovieService from '../services/MovieService';
+
 export default {
     name: 'FilterByGenre',
     data(){
         return {
-            genres: ["Action","Crime","Drama","Comedy","Horror","Detective","Historical","Documentary","Biography","Fantasy"],
+            genres: [],
             select: false,
             titleOfGenreSelected: [],
         }
@@ -55,6 +57,10 @@ export default {
         },
         cutString(source){
             return source.length > 10 ? (source.substring(0, 7) + '...') : source;
+        },
+        async loadGenres(){
+            const response = await MovieService.getGenres();
+            console.log(response)
         }
     },
     computed:{
@@ -63,6 +69,9 @@ export default {
                 ? this.cutString(this.titleOfGenreSelected.join(', '))
                 : ''
         }
+    },
+    async mounted(){
+        await this.loadGenres();
     }
 
 }

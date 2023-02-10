@@ -1,14 +1,14 @@
 <template>
     <div class="list_of_movies padding-left">
         <div class="movie__card movie-card-style" v-for="movie in movies">
-            <img class="img_of_movie" :src="movie.image" alt="">
+            <img class="img_of_movie" :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" alt="">
             <span class="movie__title">{{ movie.title }}</span>
             <div class="second__line">
-                <span class="movie__year">{{ movie.releaseYear }}</span>
+                <span class="movie__year">{{ movie.release_date.substring(0, 4) }}</span>
             </div>
             <div class="movie__rating-genre">
-                <span class="movie__genre">{{ movie.genre }}</span>
-                <span class="movie__rating">{{ movie.rating }}</span>
+                <span class="movie__genre" :id="movie.genre_ids">{{ movie.genre_ids.name }}</span>
+                <span class="movie__rating">{{ movie.vote_average }}</span>
             </div>  
             <span class="movie__country">{{ movie.country }}</span>        
         </div>
@@ -19,10 +19,10 @@
 <style>
     .list_of_movies{
         display: grid;
-        gap: 25px;
+        gap: 20px;
         padding-right: 65px;
         margin-top: 30px;
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1.5fr));
     }
     .movie__title {
         margin-top: 10px;
@@ -35,16 +35,12 @@
         gap: 2px;
     }
     .img_of_movie{
-        width: 206px;
-        height: 295px;
+        height: 341px;
     }
     .movie__rating-genre{
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
-    }
-    .movie__rating {
-        padding-right: 15px;
     }
 </style>
 
@@ -61,6 +57,8 @@ export default {
         chooseGenre: {
             type: String
         }
-    }
+    },
+
+
 }
 </script>
