@@ -1,5 +1,5 @@
 <template>
-    <div class="container padding-left">
+    <div class="container padding-top">
         <div class="about__movie" >
             <img class="about__movie__bg" :src="dayMovie.image" />
             <div class="shadow"></div>

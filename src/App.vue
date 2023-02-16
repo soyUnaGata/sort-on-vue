@@ -3,7 +3,9 @@
   <Filters
      @select-genre-changed="selectedGenreChanged"
      @select-country-changed="selectedCountryChanged"></Filters>
-  <MovieList :movies="movies"></MovieList>
+  <MovieList 
+  :movies="searchedMovie"
+  :movies-genres="moviesGenres"></MovieList>
 
   <div class="pagination"></div>
 
@@ -33,7 +35,7 @@ export default {
   data(){
     return { 
         searchText: '',
-        titleOfGenreSelected: [],
+        selectedGeneres: [],
         titleOfCountrySelected: [],
         dayMovie:
         {
@@ -45,7 +47,8 @@ export default {
           rating: 7.2
         },
         movies: [],
-        page: 1
+        page: 1,
+        moviesGenres: [],
       }
   },
   methods:{
@@ -53,7 +56,7 @@ export default {
       this.searchText = searchText;
     },
     selectedGenreChanged(genres){
-      this.titleOfGenreSelected = genres;
+      this.selectedGeneres = genres;
     },
     selectedCountryChanged(countries){
       this.titleOfCountrySelected = countries;
@@ -67,19 +70,23 @@ export default {
         response.results.forEach(x => this.movies.push(x));
         this.page++;
       }
-    }
+    },
+    async loadGenres(){
+        const response = await MovieService.getGenres();
+        response.genres.forEach(x => this.moviesGenres.push(x));
+      },
   },
   computed: {
     searchedMovie(){
       return this.movies
-      .filter((movie) => movie.title.toLowerCase().includes(this.searchText.toLowerCase()) 
-        || movie.genre.toLowerCase().includes(this.searchText.toLowerCase()))
-      .filter((movie) => !this.titleOfGenreSelected.length || this.titleOfGenreSelected.some(genre => movie.genre.includes(genre)))
+      .filter((movie) => movie.title.toLowerCase().includes(this.searchText.toLowerCase()))
+      .filter((movie) => !this.selectedGeneres.length || this.selectedGeneres.some(genre => movie.genre_ids.includes(genre.id)))
       .filter(movie => !this.titleOfCountrySelected.length || this.titleOfCountrySelected.some(country => movie.country.includes(country)))
-    }
+    },
   },
   async mounted(){
     await this.loadMovies();
+    await this.loadGenres();
   }
 }
 </script>

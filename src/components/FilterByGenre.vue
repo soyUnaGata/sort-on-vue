@@ -1,13 +1,13 @@
 <template>
     <div class="select__genre">
         <div class="title_headline select-button__style" 
-        :class="{ 'has-content' : titleOfGenreSelected.length }" 
-        :data-titles="titleOfGenreSelected.join(', ')"
+        :class="{ 'has-content' : selectedGeneres.length }" 
+        :data-titles="selectedGeneres.map(genre => genre.name).join(', ')"
          v-on:click="select = !select">
          {{ formatedSelectionText || 'Genre'}}</div>
             <div class="scroll-list" v-show="select">
-                <div class="list_of_genres" v-show="select" v-for="genre in genres">
-                <div class="genres" v-on:click="selectedGenre(genre)">{{ genre }}</div>
+                <div class="list_of_genres" v-show="select" v-for="genre in genresMovies">
+                <div class="genres" v-on:click="selectGenre(genre)">{{ genre.name }}</div>
             </div>
         </div>
     </div>    
@@ -34,39 +34,39 @@ export default {
     name: 'FilterByGenre',
     data(){
         return {
-            genres: [],
+            genresMovies: [],
             select: false,
-            titleOfGenreSelected: [],
+            selectedGeneres: [],
         }
     },
     methods:{
-        selectedGenre(genre){
-             if(!this.titleOfGenreSelected.includes(genre)){
-                this.titleOfGenreSelected.push(genre)
+        selectGenre(genre){
+             if(!this.selectedGeneres.includes(genre)){
+                this.selectedGeneres.push(genre)
              }
              this.select = false;
-             this.$emit('select-genre-changed', this.titleOfGenreSelected)
+             this.$emit('select-genre-changed', this.selectedGeneres)
         }, 
         removeSelectedGenre(title){
-            this.titleOfGenreSelected = this.titleOfGenreSelected.filter(t => t !== title)
-            this.$emit('select-genre-changed', this.titleOfGenreSelected)
+            this.selectedGeneres = this.selectedGeneres.filter(t => t !== title)
+            this.$emit('select-genre-changed', this.selectedGeneres)
         },
         clear(){
-            this.titleOfGenreSelected = [];
-            this.$emit('select-genre-changed', this.titleOfGenreSelected);
+            this.selectedGeneres = [];
+            this.$emit('select-genre-changed', this.selectedGeneres);
         },
         cutString(source){
             return source.length > 10 ? (source.substring(0, 7) + '...') : source;
         },
         async loadGenres(){
             const response = await MovieService.getGenres();
-            console.log(response)
-        }
+            response.genres.forEach(x => this.genresMovies.push(x));
+        },
     },
     computed:{
         formatedSelectionText(){
-            return this.titleOfGenreSelected.length 
-                ? this.cutString(this.titleOfGenreSelected.join(', '))
+            return this.selectedGeneres.length 
+                ? this.cutString(this.selectedGeneres.map(genre => genre.name).join(', '))
                 : ''
         }
     },

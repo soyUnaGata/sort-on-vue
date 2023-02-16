@@ -1,7 +1,8 @@
 <template>
-     <p class="search__movie padding-left" ref="text">Search Movie</p>
-     <div class="select__filters padding-left" >
-        <FilterByGenre @select-genre-changed="selectedGenreChanged" ref="filterByGenre"></FilterByGenre>
+     <p class="search__movie padding-top" ref="text">Search Movie</p>
+     <div class="select__filters padding-top" >
+        <FilterByGenre @select-genre-changed="selectedGenreChanged"
+         ref="filterByGenre"></FilterByGenre>
         <FilterByCountry @select-country-changed="selectedCountryChanged" ref="filterByCountry"></FilterByCountry>
         <button class="clear__all_filters select-button__style" @click="clearAll" v-show="genreFilterActive">Clear All</button>
      </div>

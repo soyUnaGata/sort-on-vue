@@ -1,6 +1,6 @@
 <template>
    <header class="header linear__bg">
-      <div class="logo padding-left">
+      <div class="logo padding-top">
         <a href=""><img src="@/assets/img/logo.png" alt="" class="company__logo"></a> 
           <span class="company__name">MovieBox</span>
       </div>
