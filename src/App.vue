@@ -81,7 +81,6 @@ export default {
       return this.movies
       .filter((movie) => movie.title.toLowerCase().includes(this.searchText.toLowerCase()))
       .filter((movie) => !this.selectedGeneres.length || this.selectedGeneres.some(genre => movie.genre_ids.includes(genre.id)))
-      .filter(movie => !this.titleOfCountrySelected.length || this.titleOfCountrySelected.some(country => movie.country.includes(country)))
     },
   },
   async mounted(){

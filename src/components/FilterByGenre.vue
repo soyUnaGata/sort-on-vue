@@ -1,6 +1,6 @@
 <template>
     <div class="select__genre">
-        <div class="title_headline select-button__style" 
+        <div ref="openBtn" class="title_headline select-button__style" 
         :class="{ 'has-content' : selectedGeneres.length }" 
         :data-titles="selectedGeneres.map(genre => genre.name).join(', ')"
          v-on:click="select = !select">
@@ -43,7 +43,11 @@ export default {
         selectGenre(genre){
              if(!this.selectedGeneres.includes(genre)){
                 this.selectedGeneres.push(genre)
+             }else{
+                const index = this.selectedGeneres.findIndex(item => item.name === genre.name);
+                this.selectedGeneres.splice(index, 1);
              }
+             
              this.select = false;
              this.$emit('select-genre-changed', this.selectedGeneres)
         }, 
@@ -62,6 +66,14 @@ export default {
             const response = await MovieService.getGenres();
             response.genres.forEach(x => this.genresMovies.push(x));
         },
+        clickOutside(e){
+            if(e.target !== this.$refs.openBtn && this.select) 
+            {
+                console.log(e.target)
+                this.select = false;
+            }
+            
+        }
     },
     computed:{
         formatedSelectionText(){
@@ -72,8 +84,12 @@ export default {
     },
     async mounted(){
         await this.loadGenres();
-    }
 
+        window.addEventListener('click', this.clickOutside)
+    },
+    unmounted(){
+        window.removeEventListener('click', this.clickOutside)
+    }
 }
 </script>
 
