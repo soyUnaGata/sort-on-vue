@@ -79,12 +79,12 @@
  }
  h3 {
     font-size: 73px;
-    color: var(--text-color-light);
+    color: white;
  }
  .description,.genre,.duration,.rating_movie_day {
     font-size: 16px;
     font-weight: 400;
-    color: var(--text-color-light);
+    color: white;
  }
  iframe {
     width: 1024px;

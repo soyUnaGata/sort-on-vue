@@ -2,7 +2,7 @@
     <div class="toogle-wrapper">
         <label for="" class="toogle">
             <input type="checkbox" class="toogler round" 
-            :checked="mode" 
+            :checked="theme" 
             @change="$emit('toogle')"/>
         </label>
     </div>
@@ -55,6 +55,6 @@ input:checked[type="checkbox"].toogler:before{
 
 <script>
 export default{
-    props: ['mode'],
+    props: ['theme'],
 }
 </script>

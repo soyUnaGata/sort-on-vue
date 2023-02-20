@@ -1,13 +1,13 @@
 <template>
    <header class="header linear__bg"
-   :mode = "mode">
+   :theme = "theme">
       <div class="logo padding-top">
         <a href=""><img src="@/assets/img/logo.png" alt="" class="company__logo"></a> 
           <span class="company__name">MovieBox</span>
       </div>
       <Search @search-text-changed="search"></Search>
       <a href="" class="sigin">Sign In</a>
-      <ToogleMode :mode = "mode"
+      <ToogleMode :theme = "theme"
       @toogle="$emit('toogle')"></ToogleMode>
    </header>
     
@@ -33,9 +33,9 @@
   text-decoration: none;
   font-size: 16px;
   font-weight: 500;
-  color: white;
   padding-right: 95px;
   padding-top: 20px;
+  color: var(--text-color);
 }
 </style>
 
@@ -50,7 +50,7 @@ export default {
     Search,
     ToogleMode
   },
-  props: ['mode'],
+  props: ['theme'],
   methods: {
     search(searchText){
       this.$emit('search-text-changed', searchText)

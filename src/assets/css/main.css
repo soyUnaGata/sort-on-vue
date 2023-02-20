@@ -1,15 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
 :root{
-    --main-yellow: #FED530;
-    --red-for-search:#E11D48;
-    --light-gradient: linear-gradient(82deg, rgba(249,149,127,1) 20%, rgba(245,198,168,1) 83%, rgba(242,245,208,1) 92%);
-    --dark-gradient: linear-gradient(82deg, rgba(0,0,0,0.938813025210084) 17%, rgba(0,0,0,0.865983893557423) 64%, rgba(0,0,0,0.5914740896358543) 100%);
-    --text-color-light: #ffffff;
-    --text-color-dark: rgba(0,0,0,0.5914740896358543);
+    --button-color: #FED530;
+    --for-search:#E11D48;
+    --gradient: linear-gradient(82deg, rgba(249,149,127,1) 20%, rgba(245,198,168,1) 83%, rgba(242,245,208,1) 92%);
+    --text-color:  rgba(0,0,0,0.5914740896358543);
+    --for-search-border: #BE123C;
+    --rating-color: #E11D48;
 }
 [data-theme="dark"]{
-    background: var(--dark-gradient);
-    color: var(--text-color-light);
+    --gradient: linear-gradient(82deg, rgba(0,0,0,0.938813025210084) 17%, rgba(0,0,0,0.865983893557423) 64%, rgba(0,0,0,0.5914740896358543) 100%);
+    --text-color: #ffffff;
+    --rating-color: #FED530;
+
 
 }
 
@@ -22,15 +24,10 @@ body{
     width: 100%;
     /* background: rgb(0,0,0);
     background: linear-gradient(82deg, rgba(0,0,0,0.938813025210084) 17%, rgba(0,0,0,0.865983893557423) 64%, rgba(0,0,0,0.5914740896358543) 100%); */
-    background: var(--light-gradient);
-    color: var(--text-color-dark);
+    background: var(--gradient);
+    color: var( --text-color);
     font-family: 'DM Sans', sans-serif;
     overflow-x: hidden;
-}
-
-.dark{
-    background: var(--dark-gradient);
-    color: var(--text-color-light);
 }
 #app{
     width: 1440px;
@@ -60,12 +57,12 @@ body{
 }
 
 .select-button__style {
-    border: 2px solid #FED530;
+    border: 2px solid var(--button-color);
     padding: 5px 20px;
     width: fit-content;
     height: fit-content;
     border-radius: 20px;
-    background: #FED530;
+    background: var(--button-color);
     cursor: pointer;
 }
 .has-content{

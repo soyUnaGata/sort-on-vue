@@ -16,7 +16,7 @@
     }
     .rating__stars {
         font-size: 23px;
-        color: var(--red-for-search);
+        color: var(--rating-color);
         cursor: default;
         position: relative;
     }

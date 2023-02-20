@@ -7,12 +7,7 @@
                 <span class="movie__year">{{ movie.release_date.substring(0, 4) }}</span>, 
                 <span class="movie__year">{{findMovieGenre(movie.genre_ids)}}</span>
             </div>
-            <MovieRating  :rating="movie.vote_average"
-            :class="mode"></MovieRating>  
-            <!-- <div class="movie__rating">
-                ☆★
-                 <span class="movie__rating">{{movie.vote_average }}</span>
-             </div> -->
+            <MovieRating  :rating="movie.vote_average"></MovieRating>  
             <span class="movie__country">{{ movie.country }}</span>        
         </div>
         
@@ -32,11 +27,6 @@
         margin-top: 30px;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1.5fr));
     }
-    @media (max-width: 400px ){
-    .list_of_movies{
-        gap: calc(10px + (10 + 10 * 0.7) * ((100vw - 320px) / 400));
-    }
-}
     .movie__title {
         margin-top: 10px;
         min-height: 40px;
@@ -61,7 +51,6 @@ import MovieRating from './MovieRating.vue';
 
 export default {
     name: "MovieList",
-    props:['movie'],
     components: {
         MovieRating,
     },

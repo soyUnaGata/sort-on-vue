@@ -21,8 +21,8 @@
     font-weight: 700;
 }
 .clear__all_filters.select-button__style{
-  background-color: #E11D48;
-  border-color: #BE123C;
+  background-color: var(--for-search);
+  border-color: var(--for-search-border);
   color: #fff;
   font-size: 17px;
   display: flex;
