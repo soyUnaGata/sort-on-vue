@@ -1,11 +1,14 @@
 <template>
-   <header class="header linear__bg">
+   <header class="header linear__bg"
+   :mode = "mode">
       <div class="logo padding-top">
         <a href=""><img src="@/assets/img/logo.png" alt="" class="company__logo"></a> 
           <span class="company__name">MovieBox</span>
       </div>
       <Search @search-text-changed="search"></Search>
       <a href="" class="sigin">Sign In</a>
+      <ToogleMode :mode = "mode"
+      @toogle="$emit('toogle')"></ToogleMode>
    </header>
     
 </template>
@@ -39,12 +42,15 @@
 <script>
 
 import Search from './Search.vue';
+import ToogleMode from './ToogleMode.vue';
 
 export default {
   name: 'Header',
   components: {
-    Search
+    Search,
+    ToogleMode
   },
+  props: ['mode'],
   methods: {
     search(searchText){
       this.$emit('search-text-changed', searchText)

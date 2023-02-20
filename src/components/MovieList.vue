@@ -4,10 +4,11 @@
             <img class="img_of_movie" :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" alt="">
             <span class="movie__title">{{ movie.title }}</span>
             <div class="second__line">
-                <span class="movie__year">{{ movie.release_date.substring(0, 4) }}</span>
+                <span class="movie__year">{{ movie.release_date.substring(0, 4) }}</span>, 
+                <span class="movie__year">{{findMovieGenre(movie.genre_ids)}}</span>
             </div>
-            <span class="movie__genre">{{findMovieGenre(movie.genre_ids) }}</span>
-            <MovieRating :rating="movie.vote_average"></MovieRating>  
+            <MovieRating  :rating="movie.vote_average"
+            :class="mode"></MovieRating>  
             <!-- <div class="movie__rating">
                 ☆★
                  <span class="movie__rating">{{movie.vote_average }}</span>
@@ -38,6 +39,7 @@
 }
     .movie__title {
         margin-top: 10px;
+        min-height: 40px;
     }
     .movie__card{
         display: flex;
@@ -59,8 +61,15 @@ import MovieRating from './MovieRating.vue';
 
 export default {
     name: "MovieList",
+    props:['movie'],
     components: {
         MovieRating,
+    },
+    data(){
+        return {
+            totalStars: 10,
+        }
+
     },
     props: {
         movies: {
@@ -72,9 +81,37 @@ export default {
     },
     methods: {
         findMovieGenre(genre_ids) {
+            return this.moviesGenres.find(g => g.id === genre_ids[0]).name;
             return genre_ids.filter(id => this.moviesGenres.find(g => g.id === id)).map(id => this.moviesGenres.find(g => g.id === id).name).join(", ");
         },
     },
+    computed: {
+        generalStars(){
+                const stars = [];
+                let temp = this.rating;
+                console.log(temp)
+                while(temp > 0){
+                    if(temp < 1){
+                        stars.push(temp.toFixed(1) )
+                    }
+                    else{
+                        stars.push(1)
+                        console.log(stars)
+                    }
+
+                    temp--;
+                }
+
+                if(this.totalStars > stars.length){
+                    const generalStar = (this.totalStars - stars.length)
+                    for (let i = 0; i < generalStar; i++) {
+                        stars.push(0)                        
+                    }
+                }
+
+                return stars;
+            }
+    }
     
 }
 

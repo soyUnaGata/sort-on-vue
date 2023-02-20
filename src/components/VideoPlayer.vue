@@ -10,7 +10,7 @@
                 <LimitedText :text="dayMovie.description" :limit="210"></LimitedText>
                 <p class="genre">Genre: {{dayMovie.genre}}</p>
                 <span class="duration">Duration: {{dayMovie.duration}}</span>
-                <p class="rating">Rating: {{ dayMovie.rating }}</p>
+                <p class="rating_movie_day">Rating: {{ dayMovie.rating }}</p>
             </div> 
             
             <button type="button" class="playVideo" @click="show" >
@@ -30,7 +30,7 @@
                 </header>
 
                 <section class="modal-body">
-                    <iframe ref="video" src="https://www.youtube.com/embed/U402uMSRq1g?autoplay=1&enablejsapi=1"  allow="autoplay" frameborder="0" seamless sandbox="allow-scripts allow-same-origin allow-presentation"></iframe>
+                    <iframe ref="video" src="https://www.youtube.com/embed/U402uMSRq1g?autoplay=1&enablejsapi=1" title="A Simple Favor (2018 Movie) Official Trailer" allow="autoplay" frameborder="0" seamless sandbox="allow-scripts allow-same-origin allow-presentation"></iframe>
                     <!-- <slot name="body">
                         <iframe width="1024px" height="768px" src="https://www.youtube.com/embed/rAqMlh0b2HU" title="A Simple Favor (2018 Movie) Official Trailer – Anna Kendrick, Blake Lively, Henry Golding" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                      </slot> -->
@@ -79,10 +79,12 @@
  }
  h3 {
     font-size: 73px;
+    color: var(--text-color-light);
  }
- .description,.genre,.duration,.rating {
+ .description,.genre,.duration,.rating_movie_day {
     font-size: 16px;
     font-weight: 400;
+    color: var(--text-color-light);
  }
  iframe {
     width: 1024px;

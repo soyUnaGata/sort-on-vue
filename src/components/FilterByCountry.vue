@@ -46,6 +46,7 @@
     .list_of_countries {
         margin-top: 10px;
         cursor: pointer;
+        color: var(--text-color-light);
     }
 
 </style>

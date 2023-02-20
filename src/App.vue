@@ -1,8 +1,10 @@
 <template>
-  <Header @search-text-changed="search"></Header>
+  <Header @search-text-changed="search"
+  @toogle="toogle"></Header>
   <Filters
      @select-genre-changed="selectedGenreChanged"
-     @select-country-changed="selectedCountryChanged"></Filters>
+     @select-country-changed="selectedCountryChanged"
+     @toogle="toogle"></Filters>
   <MovieList 
   :movies="searchedMovie"
   :movies-genres="moviesGenres"></MovieList>
@@ -49,6 +51,9 @@ export default {
         movies: [],
         page: 1,
         moviesGenres: [],
+        mode: ['light', 'dark'],
+        theme: 'light'
+        
       }
   },
   methods:{
@@ -64,6 +69,18 @@ export default {
     tripleclick(data, clickCount){
       console.log(data, clickCount)
     },
+    toogle(){
+      if(this.theme == 'dark'){
+        this.theme = 'light'
+        document.body.setAttribute('data-theme', 'light');
+
+      }
+      else{
+        document.body.setAttribute('data-theme', 'dark');
+        this.theme = 'dark'
+      }
+    },
+  
     async loadMovies(){
       const response = await MovieService.getPopular(this.page);
       if(response.results){
