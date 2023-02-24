@@ -47,9 +47,9 @@ export default {
         FilterByCountry
     },
     methods: {
-    selectedGenreChanged(titleOfGenreSelected){
-      this.genreFilterActive = titleOfGenreSelected.length > 0,
-      this.$emit('select-genre-changed', titleOfGenreSelected)
+    selectedGenreChanged(selectedGeneres){
+      this.genreFilterActive = selectedGeneres.length > 0,
+      this.$emit('select-genre-changed', selectedGeneres)
     },
     selectedCountryChanged(titleOfCountrySelected){
       this.genreFilterActive = titleOfCountrySelected.length > 0,

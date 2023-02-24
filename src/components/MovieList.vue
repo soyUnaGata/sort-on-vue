@@ -7,11 +7,16 @@
                 <span class="movie__year">{{ movie.release_date.substring(0, 4) }}</span>, 
                 <span class="movie__year">{{findMovieGenre(movie.genre_ids)}}</span>
             </div>
-            <MovieRating  :rating="movie.vote_average"></MovieRating>  
+            <MovieRating :rating="movie.vote_average"></MovieRating>  
             <span class="movie__country">{{ movie.country }}</span>        
-        </div>
-        
+        </div>     
     </div>
+
+    <div class="pagination">
+        <!-- <button class="previous" v-on:click="prevPage()">Previous</button> -->
+        <button class="next" @click="nextPage()">Next</button>
+    </div>
+ 
 </template>
 
 <style>
@@ -49,6 +54,7 @@
 <script>
 import MovieRating from './MovieRating.vue';
 
+
 export default {
     name: "MovieList",
     components: {
@@ -57,6 +63,7 @@ export default {
     data(){
         return {
             totalStars: 10,
+            pageSize: 20
         }
 
     },
@@ -66,42 +73,36 @@ export default {
         },
         moviesGenres: {
             type: Array,
+        },
+        page:{
+            type: Number,
+        },
+        loadMovies:{
+            type: Object,
         }
     },
     methods: {
         findMovieGenre(genre_ids) {
-            return this.moviesGenres.find(g => g.id === genre_ids[0]).name;
-            return genre_ids.filter(id => this.moviesGenres.find(g => g.id === id)).map(id => this.moviesGenres.find(g => g.id === id).name).join(", ");
+            if(!genre_ids || !genre_ids.length) return '';
+            const genre = this.moviesGenres.find(g => g.id === genre_ids[0]);
+            return genre?.name || '';
+            // return genre_ids.filter(id => this.moviesGenres.find(g => g.id === id)).map(id => this.moviesGenres.find(g => g.id === id).name).join(", ");
         },
+        prevPage(){
+            this.$emit('preview-page');
+        },
+        nextPage(){
+            this.$emit('next-page');
+       },
+
     },
     computed: {
-        generalStars(){
-                const stars = [];
-                let temp = this.rating;
-                console.log(temp)
-                while(temp > 0){
-                    if(temp < 1){
-                        stars.push(temp.toFixed(1) )
-                    }
-                    else{
-                        stars.push(1)
-                        console.log(stars)
-                    }
+        // <--- If we don't want infinty scroll --->
+        // paginatedMovies(){
+        //     return this.movies.slice(this.pageSize * (this.page - 1), this.pageSize * this.page);
+        // }
+    },
 
-                    temp--;
-                }
-
-                if(this.totalStars > stars.length){
-                    const generalStar = (this.totalStars - stars.length)
-                    for (let i = 0; i < generalStar; i++) {
-                        stars.push(0)                        
-                    }
-                }
-
-                return stars;
-            }
-    }
-    
 }
 
 

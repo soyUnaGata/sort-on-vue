@@ -6,10 +6,11 @@
      @select-country-changed="selectedCountryChanged"
      @toogle="toogle"></Filters>
   <MovieList 
-  :movies="searchedMovie"
-  :movies-genres="moviesGenres"></MovieList>
-
-  <div class="pagination"></div>
+    :movies="searchedMovie"
+    :page="page"
+    :movies-genres="moviesGenres"
+    @preview-page="previewPage"
+    @next-page="nextPage"></MovieList>
 
   <VideoPlayer :day-movie="dayMovie"></VideoPlayer>
   
@@ -60,8 +61,9 @@ export default {
     search(searchText){
       this.searchText = searchText;
     },
-    selectedGenreChanged(genres){
+    selectedGenreChanged(genres, select){
       this.selectedGeneres = genres;
+      select = false;
     },
     selectedCountryChanged(countries){
       this.titleOfCountrySelected = countries;
@@ -85,7 +87,15 @@ export default {
       const response = await MovieService.getPopular(this.page);
       if(response.results){
         response.results.forEach(x => this.movies.push(x));
-        this.page++;
+      }
+    },
+    // previewPage(){
+    //   this.page--;
+    // },
+    async nextPage(){
+      this.page++;
+      if(this.movies.length < this.page * 20){
+        await this.loadMovies();
       }
     },
     async loadGenres(){

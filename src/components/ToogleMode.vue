@@ -25,14 +25,14 @@ input[type="checkbox"].toogler {
     height: 22px;
     -webkit-appearance: none;
     outline: none;
-    background: #c6c6c6;
+    background: var( --gradient);
     border-radius: 20px;
     transition: .5s;
-    box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+    box-shadow: inset 0 0 5px var( --gradient);
     cursor: pointer;
 }
 input:checked[type="checkbox"].toogler{
-    background: var(--light-gradient);
+    background: var( --gradient);
 }
 input[type="checkbox"].toogler:before{
     content: '';
