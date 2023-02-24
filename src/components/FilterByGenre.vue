@@ -6,7 +6,7 @@
         v-on:click="switchOpen">
          {{ formatedSelectionText || 'Genre'}}</div>
             <div class="scroll-list" v-show="select">
-                <div class="list_of_genres"  v-for="genre in genresMovies">
+                <div class="list_of_genres" v-show="select" v-for="genre in genresMovies">
                 <div class="genres"  v-on:click.stop="selectGenre(genre)">{{ genre.name }}</div>
             </div>
         </div>
@@ -46,9 +46,9 @@ export default {
 
              if(index === -1){
                 this.selectedGeneres.push(genre)
+             }else{
+                this.selectedGeneres.splice(index, 1);
              }
-             console.log('selectGenre')
-
              this.select = false;
              this.$emit('select-genre-changed', this.selectedGeneres)
         }, 
@@ -68,7 +68,6 @@ export default {
             response.genres.forEach(x => this.genresMovies.push(x));
         },
         clickOutside(e){
-            console.log('clickOutside')
             if(e.target !== this.$refs.openBtn && this.select) 
             {
                 this.select = false;
@@ -76,7 +75,6 @@ export default {
             
         },
         switchOpen(){
-            console.log('switchOpen')
             this.select = !this.select
         }
     },
