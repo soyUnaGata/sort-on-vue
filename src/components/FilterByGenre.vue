@@ -1,13 +1,13 @@
 <template>
-    <div class="select__genre">
+    <div  class="select__genre">
         <div ref="openBtn" class="title_headline select-button__style" 
         :class="{ 'has-content' : selectedGeneres.length }" 
         :data-titles="selectedGeneres.map(genre => genre.name).join(', ')"
-         v-on:click="select = !select">
+        v-on:click="switchOpen">
          {{ formatedSelectionText || 'Genre'}}</div>
             <div class="scroll-list" v-show="select">
-                <div class="list_of_genres" v-show="select" v-for="genre in genresMovies">
-                <div class="genres" v-on:click="selectGenre(genre)">{{ genre.name }}</div>
+                <div class="list_of_genres"  v-for="genre in genresMovies">
+                <div class="genres"  v-on:click.stop="selectGenre(genre)">{{ genre.name }}</div>
             </div>
         </div>
     </div>    
@@ -41,21 +41,21 @@ export default {
         }
     },
     methods:{
-        selectGenre(genre){
-             if(!this.selectedGeneres.includes(genre)){
+         selectGenre(genre){    
+            const index = this.selectedGeneres.findIndex(item => item.id === genre.id);
+
+             if(index === -1){
                 this.selectedGeneres.push(genre)
-             }else{
-                const index = this.selectedGeneres.findIndex(item => item.name === genre.name);
-                this.selectedGeneres.splice(index, 1);
              }
-             
+             console.log('selectGenre')
+
              this.select = false;
              this.$emit('select-genre-changed', this.selectedGeneres)
         }, 
-        removeSelectedGenre(title){
-            this.selectedGeneres = this.selectedGeneres.filter(t => t !== title)
-            this.$emit('select-genre-changed', this.selectedGeneres)
-        },
+        // removeSelectedGenre(title){
+        //     this.selectedGeneres = this.selectedGeneres.filter(t => t !== title)
+        //     this.$emit('select-genre-changed', this.selectedGeneres)
+        // },
         clear(){
             this.selectedGeneres = [];
             this.$emit('select-genre-changed', this.selectedGeneres);
@@ -68,12 +68,16 @@ export default {
             response.genres.forEach(x => this.genresMovies.push(x));
         },
         clickOutside(e){
+            console.log('clickOutside')
             if(e.target !== this.$refs.openBtn && this.select) 
             {
-                console.log(e.target)
                 this.select = false;
             }
             
+        },
+        switchOpen(){
+            console.log('switchOpen')
+            this.select = !this.select
         }
     },
     computed:{
