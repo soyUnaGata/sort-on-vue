@@ -4,6 +4,9 @@
         <FilterByGenre @select-genre-changed="selectedGenreChanged"
          ref="filterByGenre"></FilterByGenre>
         <FilterByCountry @select-country-changed="selectedCountryChanged" ref="filterByCountry"></FilterByCountry>
+        <FilterByYear 
+        ref="filterByYear"
+        @select-year-changed="selectedYearsChanged"></FilterByYear>
         <button class="clear__all_filters select-button__style" @click="clearAll" v-show="genreFilterActive">Clear All</button>
      </div>
     
@@ -33,6 +36,7 @@
 <script>
 import FilterByGenre from './FilterByGenre.vue';
 import FilterByCountry from './FilterByCountry.vue';
+import FilterByYear from './FilterByYear.vue'
 import { eventBus } from '@/eventBus';
 
 export default {
@@ -44,7 +48,8 @@ export default {
     },
     components: {
         FilterByGenre,
-        FilterByCountry
+        FilterByCountry,
+        FilterByYear
     },
     methods: {
     selectedGenreChanged(selectedGeneres){
@@ -55,9 +60,14 @@ export default {
       this.genreFilterActive = titleOfCountrySelected.length > 0,
       this.$emit('select-country-changed', titleOfCountrySelected)
     },
+    selectedYearsChanged(selectedYears){
+      this.genreFilterActive = selectedYears.length > 0,
+      this.$emit('select-genre-changed', selectedYears)
+    },
     clearAll(){
       this.$refs.filterByGenre.clear(),
-      this.$refs.filterByCountry.clear();
+      this.$refs.filterByCountry.clear(),
+      this.$refs.filterByYear.clear(),
       eventBus.$emit('clear-all-filters')
     }
   }

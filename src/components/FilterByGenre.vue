@@ -20,10 +20,10 @@
     color: black;
 }
 .list_of_genres {
-        margin-top: 10px;
-        cursor: pointer;
-        padding-right: 10px;
-        color: var(--text-color-light);
+    margin-top: 10px;
+    cursor: pointer;
+    padding-right: 10px;
+    color: var(--text-color-light);
 }
 
 </style>
