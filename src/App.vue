@@ -4,6 +4,7 @@
   <Filters
      @select-genre-changed="selectedGenreChanged"
      @select-country-changed="selectedCountryChanged"
+     @select-year-changed="selectedYearsChanged"
      @toogle="toogle"></Filters>
   <MovieList 
     :movies="searchedMovie"
@@ -61,9 +62,8 @@ export default {
     search(searchText){
       this.searchText = searchText;
     },
-    selectedGenreChanged(genres, select){
+    selectedGenreChanged(genres){
       this.selectedGeneres = genres;
-      select = false;
     },
     selectedCountryChanged(countries){
       this.titleOfCountrySelected = countries;
