@@ -41,6 +41,7 @@ export default {
         searchText: '',
         selectedGeneres: [],
         titleOfCountrySelected: [],
+        selectedYears: [],
         dayMovie:
         {
           image: 'https://content.internetvideoarchive.com/content/hdphotos/11946/011946/011946_1280x720_544044_023.jpg',
@@ -67,6 +68,9 @@ export default {
     },
     selectedCountryChanged(countries){
       this.titleOfCountrySelected = countries;
+    },
+    selectedYearsChanged(years){
+      this.selectedYears = years;
     },
     tripleclick(data, clickCount){
       console.log(data, clickCount)
@@ -107,7 +111,9 @@ export default {
     searchedMovie(){
       return this.movies
       .filter((movie) => movie.title.toLowerCase().includes(this.searchText.toLowerCase()))
+      .filter((movie) => !this.selectedYears.length || this.selectedYears.some(date => movie.release_date.includes(String(date))))
       .filter((movie) => !this.selectedGeneres.length || this.selectedGeneres.some(genre => movie.genre_ids.includes(genre.id)))
+      
     },
   },
   async mounted(){

@@ -7,7 +7,7 @@
          {{ formatedSelectionText || 'Year'}}</div>
             <div class="scroll-list" v-show="select">
                 <div class="list_of_years" v-show="select" v-for="year in years">
-                <div class="years"  v-on:click.stop="selectYear(year)">{{ year }}</div>
+                <div class="years"  v-on:click="selectYear(year)">{{ year }}</div>
             </div>
         </div>
     </div>   
@@ -32,11 +32,12 @@ export default {
         selectYear(year){    
             const index = this.selectedYears.findIndex(item => item.id === year.id);
 
-             if(index === -1){
+             if(!this.selectedYears.includes(year)){
                 this.selectedYears.push(year)
-             }else{
-                this.selectedYears.splice(index, 1);
              }
+            //  else{
+            //     this.selectedYears.splice(index, 1);
+            //  }
              this.select = false;
              this.$emit('select-year-changed', this.selectedYears)
         }, 

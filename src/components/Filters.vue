@@ -62,7 +62,7 @@ export default {
     },
     selectedYearsChanged(selectedYears){
       this.genreFilterActive = selectedYears.length > 0,
-      this.$emit('select-genre-changed', selectedYears)
+      this.$emit('select-year-changed', selectedYears)
     },
     clearAll(){
       this.$refs.filterByGenre.clear(),
