@@ -14,7 +14,7 @@
 
     <div class="pagination">
         <!-- <button class="previous" v-on:click="prevPage()">Previous</button> -->
-        <button class="next" @click="nextPage()">Next</button>
+        <button class="show_more select-button__style" @click="nextPage()">Show More</button>
     </div>
  
 </template>
@@ -48,6 +48,18 @@
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
+    }
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+    .show_more{
+        display: flex;
+        align-items: center;
+        font-size: 17px;
+        color: black;
     }
 </style>
 

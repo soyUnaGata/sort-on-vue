@@ -8,7 +8,9 @@
                 <!-- <span class="description">{{dayMovie.description }}</span>
                 <a href="#">Read More</a> -->
                 <LimitedText :text="dayMovie.description" :limit="210"></LimitedText>
-                <p class="genre">Genre: {{dayMovie.genre}}</p>
+                <p class="genre">Genre: 
+                   <span>{{dayMovie.genre}}</span> 
+                </p>
                 <span class="duration">Duration: {{dayMovie.duration}}</span>
                 <p class="rating_movie_day">Rating: {{ dayMovie.rating }}</p>
             </div> 
@@ -84,7 +86,13 @@
  .description,.genre,.duration,.rating_movie_day {
     font-size: 16px;
     font-weight: 400;
-    color: white;
+    color: #ffffff;
+ }
+ .genre{
+    color: var(--button-color);
+ }
+ .genre span{
+    color: #ffffff;
  }
  iframe {
     width: 1024px;
