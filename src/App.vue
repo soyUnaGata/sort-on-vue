@@ -1,6 +1,7 @@
 <template>
   <Header @search-text-changed="search"
   @toogle="toogle"></Header>
+  <VideoPlayer :day-movie="dayMovie"></VideoPlayer>
   <Filters
      @select-genre-changed="selectedGenreChanged"
      @select-country-changed="selectedCountryChanged"
@@ -11,11 +12,12 @@
     :page="page"
     :movies-genres="moviesGenres"
     @preview-page="previewPage"
-    @next-page="nextPage"></MovieList>
+    @next-page="nextPage">
+  </MovieList>
 
-  <VideoPlayer :day-movie="dayMovie"></VideoPlayer>
+  <Footer></Footer>
   
-  <TrippleClickButton @tripleclick="tripleclick"></TrippleClickButton>
+  <!-- <TrippleClickButton @tripleclick="tripleclick"></TrippleClickButton> -->
 </template>
 
 <script>
@@ -25,6 +27,7 @@ import MovieList from './components/MovieList.vue';
 import TrippleClickButton from './components/TrippleClickButton.vue';
 import VideoPlayer from './components/VideoPlayer.vue'
 import MovieService from './services/MovieService';
+import Footer from './components/Footer';
 
 export default {
   name: 'App',
@@ -33,6 +36,7 @@ export default {
     Filters,
     MovieList,
     VideoPlayer,
+    Footer,
     TrippleClickButton,
     
 },

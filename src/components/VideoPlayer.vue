@@ -48,6 +48,7 @@
 <style>
 .container {
     padding-right: 80px;
+    margin-top: 40px;
 }
 .about__movie{
     position: relative;
