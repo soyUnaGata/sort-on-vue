@@ -8,6 +8,7 @@
     --rating-color: #E11D48;
     --footer--first:rgba(249,149,127,1);
     --footer--secondary: rgba(245,198,168,1);
+    --input--email: rgba(242,245,208,1);
 }
 [data-theme="dark"]{
     --gradient: linear-gradient(82deg, rgba(0,0,0,0.938813025210084) 17%, rgba(0,0,0,0.865983893557423) 64%, rgba(0,0,0,0.5914740896358543) 100%);
@@ -15,6 +16,7 @@
     --rating-color: #FED530;
     --footer--first: rgba(0,0,0,0.138800);
     --footer--secondary: rgba(0,0,0,0.5914740896358543);
+    --input--email: #9A9AB0;
 
 
 }
