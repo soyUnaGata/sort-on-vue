@@ -6,7 +6,7 @@
           <span class="company__name">MovieBox</span>
       </div>
       <Search @search-text-changed="search"></Search>
-      <a href="" class="sigin">Sign In</a>
+      <SignUp></SignUp>
       <ToogleMode :theme = "theme"
       @toogle="$emit('toogle')"></ToogleMode>
    </header>
@@ -29,26 +29,21 @@
     font-size: 24px;
     line-height: 24px;
 }
-.sigin {
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: 500;
-  padding-right: 95px;
-  padding-top: 20px;
-  color: var(--text-color);
-}
+
 </style>
 
 <script>
 
 import Search from './Search.vue';
 import ToogleMode from './ToogleMode.vue';
+import SignUp from './SignUp.vue'
 
 export default {
   name: 'Header',
   components: {
     Search,
-    ToogleMode
+    ToogleMode,
+    SignUp
   },
   props: ['theme'],
   methods: {
