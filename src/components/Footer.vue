@@ -17,35 +17,50 @@
         </div>
 
         <div class="section__more_about">
-            <div class="content__col links">
-                <div class="content__column width">
-                    <a href="#" class="main">Product</a>
-                    <a href="#">Movies</a>
-                    <a href="#">TV Show</a>
-                    <a href="#">Videos</a>
+           <div class="three_columns_content">
+                <div class="content__col links">
+                    <div class="content__column width">
+                        <a href="#" class="main">Product</a>
+                        <a href="#">Movies</a>
+                        <a href="#">TV Show</a>
+                        <a href="#">Videos</a>
+                    </div>
                 </div>
-            </div>
 
-            <div class="content__colu">
-                <div class="content__column">
-                    <a href="#" class="main">Media Group</a>
-                    <a href="#">Nice Studio</a>
-                    <a href="#">Nice News</a>
-                    <a href="#">Nice TV</a>
+                <div class="content__colu">
+                    <div class="content__column">
+                        <a href="#" class="main">Media Group</a>
+                        <a href="#">Nice Studio</a>
+                        <a href="#">Nice News</a>
+                        <a href="#">Nice TV</a>
+                    </div>
                 </div>
-            </div>
 
-            <div class="content__colu">
-                <div class="content__column">
-                    <a href="#" class="main">Sitemap</a>
-                    <a href="#">About</a>
-                    <a href="#">Careers</a>
-                    <a href="#">Press</a>
+                <div class="content__colu">
+                    <div class="content__column">
+                        <a href="#" class="main">Sitemap</a>
+                        <a href="#">About</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Press</a>
+                    </div>
                 </div>
-            </div>
+           </div>
 
             <div class="content__short__info">
+                <div class="info">
+                    <img src="../assets/img/LocationMapMarker4.png" alt="Location">
+                    <span class="location">8819 Ohio St. South Gate, California 90280</span>
+                </div>
 
+                <div class="info">
+                    <img src="../assets/img/Mail.svg" alt="Mail">
+                    <span class="e-mail_ad">ourstudio@hello.com</span>
+                </div>
+
+                <div class="info">
+                    <img src="../assets/img/Phone.svg" alt="Phone">
+                    <span class="phone_company">+271 386-647-3637</span>
+                </div>
             </div>
         </div>
     </div>
@@ -125,10 +140,12 @@ input[type="text"].insert_email::placeholder{
 .section__more_about{
     width: 60%;
     display: flex;
-    gap: 160px;
+    flex-direction: column;
     background: var(--footer--secondary);
 }
-.content__col{
+.three_columns_content{
+    display: flex;
+    gap: 160px;
     margin-left: 64px;
     margin-top: 133px;
 }
@@ -148,12 +165,17 @@ input[type="text"].insert_email::placeholder{
 .main {
     font-weight: 600;
 }
-.content__colu{
-    margin-top: 133px;
-
+.content__short__info{
+    margin-top: 100px;
+    display: flex;
+    gap: 24px;
+    margin-left: 64px;
+    font-size: 14px;
 }
+.info{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
 </style>
-
-<script>
-
-</script>
