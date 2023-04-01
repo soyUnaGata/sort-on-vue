@@ -16,15 +16,12 @@
   </MovieList>
 
   <Footer></Footer>
-  
-  <!-- <TrippleClickButton @tripleclick="tripleclick"></TrippleClickButton> -->
-</template>
+  </template>
 
 <script>
 import Filters from './components/Filters.vue';
 import Header from './components/Header.vue';
 import MovieList from './components/MovieList.vue';
-import TrippleClickButton from './components/TrippleClickButton.vue';
 import VideoPlayer from './components/VideoPlayer.vue'
 import MovieService from './services/MovieService';
 import Footer from './components/Footer';
@@ -37,7 +34,6 @@ export default {
     MovieList,
     VideoPlayer,
     Footer,
-    TrippleClickButton,
     
 },
   data(){
