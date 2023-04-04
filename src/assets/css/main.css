@@ -28,8 +28,6 @@
 }
 body{
     width: 100%;
-    /* background: rgb(0,0,0);
-    background: linear-gradient(82deg, rgba(0,0,0,0.938813025210084) 17%, rgba(0,0,0,0.865983893557423) 64%, rgba(0,0,0,0.5914740896358543) 100%); */
     background: var(--gradient);
     color: var( --text-color);
     font-family: 'DM Sans', sans-serif;
