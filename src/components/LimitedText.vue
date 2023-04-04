@@ -14,6 +14,9 @@
         font-size: 16px;
         font-weight: 400;
     }
+    .description > span {
+        cursor: pointer;
+    }
 </style>
 
 <script>

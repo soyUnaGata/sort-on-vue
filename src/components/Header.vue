@@ -6,7 +6,7 @@
           <span class="company__name">MovieBox</span>
       </div>
       <Search @search-text-changed="search"></Search>
-      <SignUp></SignUp>
+      <p>SignUp</p> 
       <ToogleMode :theme = "theme"
       @toogle="$emit('toogle')"></ToogleMode>
    </header>
@@ -36,14 +36,12 @@
 
 import Search from './Search.vue';
 import ToogleMode from './ToogleMode.vue';
-import SignUp from './SignUp.vue'
 
 export default {
   name: 'Header',
   components: {
     Search,
     ToogleMode,
-    SignUp
   },
   props: ['theme'],
   methods: {

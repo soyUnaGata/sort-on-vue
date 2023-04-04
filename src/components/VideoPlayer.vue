@@ -11,8 +11,12 @@
                 <p class="genre">Genre: 
                    <span>{{dayMovie.genre}}</span> 
                 </p>
-                <span class="duration">Duration: {{dayMovie.duration}}</span>
-                <p class="rating_movie_day">Rating: {{ dayMovie.rating }}</p>
+                <span class="duration">Duration: 
+                   <span>{{dayMovie.duration}}</span> 
+                </span>
+                <p class="rating_movie_day">Rating: 
+                    <span>{{ dayMovie.rating }}</span>
+                </p>
             </div> 
             
             <button type="button" class="playVideo" @click="show" >
@@ -32,7 +36,7 @@
                 </header>
 
                 <section class="modal-body">
-                    <iframe ref="video" src="https://www.youtube.com/embed/rAqMlh0b2HU?autoplay=1&enablejsapi=1" title="A Simple Favor (2018 Movie) Official Trailer" allow="autoplay" frameborder="0" seamless sandbox="allow-scripts allow-same-origin allow-presentation"></iframe>
+                    <iframe ref="video" src="https://www.youtube.com/embed/rAqMlh0b2HU?autoplay=1&enablejsapi=1&mute=1" title="A Simple Favor (2018 Movie) Official Trailer" allow="autoplay" frameborder="0" seamless sandbox="allow-scripts allow-same-origin allow-presentation"></iframe>
                     <!-- <slot name="body">
                         <iframe width="1024px" height="768px" src="https://www.youtube.com/embed/rAqMlh0b2HU" title="A Simple Favor (2018 Movie) Official Trailer – Anna Kendrick, Blake Lively, Henry Golding" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                      </slot> -->
@@ -89,10 +93,16 @@
     font-weight: 400;
     color: #ffffff;
  }
- .genre{
+ .genre, .duration, .rating_movie_day{
     color: var(--button-color);
  }
  .genre span{
+    color: #ffffff;
+ }
+ .duration span{
+    color: #ffffff;
+ }
+ .rating_movie_day span{
     color: #ffffff;
  }
  iframe {
