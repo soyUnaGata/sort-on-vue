@@ -45,17 +45,6 @@ body{
     padding-left: 95px;
     
 }
-@media (max-width: 1200px ){
-   #app{
-    width: 1200px;
-    padding: calc(20px + (95 - 20) * ((100vw - 320px) / (1200 - 320)));
-   } 
-}
-@media (max-width: 490px ){
-    #app{
-     padding: calc(20px + (95 - 20) * ((100vw - 320px) / (490 - 320)));
-    } 
- }
 .padding-top{
     padding-top: 20px;
 }
