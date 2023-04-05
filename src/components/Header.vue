@@ -6,7 +6,9 @@
           <span class="company__name">MovieBox</span>
       </div>
       <Search @search-text-changed="search"></Search>
-      <p>SignUp</p> 
+      <p class="sign-up">
+        <a href="#">SignUp</a>
+      </p> 
       <ToogleMode :theme = "theme"
       @toogle="$emit('toogle')"></ToogleMode>
    </header>
@@ -26,8 +28,12 @@
 }
 .company__name{
     font-weight: 700;
-    font-size: 24px;
+    font-size: clamp(18px, 4vw, 24px);
     line-height: 24px;
+}
+.sign-up > a {
+  text-decoration: none;
+  color: var(--text-color);
 }
 
 </style>
