@@ -111,7 +111,7 @@ export default {
     searchedMovie(){
       return this.movies
       .filter((movie) => movie.title.toLowerCase().includes(this.searchText.toLowerCase()))
-      .filter((movie) => !this.selectedYears.length || this.selectedYears.some(date => movie.release_date.includes(String(date))))
+      .filter((movie) => !this.selectedYears.length || this.selectedYears.some(date => movie.release_date?.includes(String(date))))
       .filter((movie) => !this.selectedGeneres.length || this.selectedGeneres.some(genre => movie.genre_ids.includes(genre.id)))
       
     },

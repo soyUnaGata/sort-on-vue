@@ -19,6 +19,9 @@
     .toogle-wrapper {
         align-items: flex-end;
     }
+    .toogle {
+        right: 0px;
+    }
 
     .container {
         margin-top: 20px;
@@ -70,6 +73,13 @@
         grid-template-columns: repeat(auto-fit, minmax(213px, 1.5fr));
         padding: 15px 0;
     }
+    .insert_email {
+        max-width: 100%;
+        width: 244px;
+    }
+    .btn__submit {
+        left: 189px;
+    }
     .movie__card {
         width: 229px; 
     }
@@ -86,13 +96,15 @@
     .footer {
         flex-direction: column;
         align-items: center;
+        margin-top: 15px;
     }
     .section__subscribe {
         width: 100%;
         background-color: transparent;
     }
     .name__company {
-        font-size: 44px;
+        font-size: 40px;
+        margin-top: 20px;
     }
     .section__more_about {
         width: 100%;
@@ -101,14 +113,42 @@
     .subscribe__fixed-width {
         width: 100%;
         max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin-bottom: 50px;
+    }
+    .section__input__subscribe {
+        position: relative;
+    }
+    .why__you__need__subscribe {
+        font-size: 14px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .btn-sub {
+        position: absolute;
+        top: calc(50% - 24px);
+        left: calc(100% - 54px);
+    }
+    input[type="text"].insert_email {
+        width: 100%;
     }
     .three_columns_content {
-        margin-top: 0;
+        margin: 0;
         flex-direction: column;
         gap: 20px;
     }
     .content__short__info {
         margin-top: 20px;
         flex-direction: column;
+        margin-left: 0;
+        padding-bottom: 10px;
+    }
+}
+
+@media (max-width: 320px) {
+    .company__name {
+        display: none;
     }
 }

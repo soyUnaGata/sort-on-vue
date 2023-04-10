@@ -7,10 +7,7 @@
                 <p class="join__us">Join Newsletters</p>
                 <div class="section__input__subscribe">
                     <input class="insert_email" type="text" placeholder="Insert your mail here">
-                    <div class="btn__submit">
-                        <button class="btn-sub" type="submit">→</button>
-                    </div>
-                    
+                    <button class="btn-sub" type="submit">→</button>
                 </div>
             </div>
             
@@ -99,6 +96,7 @@
 }
 .section__input__subscribe{
     margin-top: 25px;
+    position: relative;
 }
 .insert_email{
     height: 64px;
@@ -106,7 +104,6 @@
     width: 282px;
     border: none;
     border-radius: 10px;
-    position: absolute;
 }
 input[type="text"].insert_email{
     outline: none;
@@ -119,11 +116,7 @@ input[type="text"].insert_email::placeholder{
     font-weight: 200;
     padding-left: 15px;
 }
-.btn__submit{
-    position: relative;
-    left: 228px;
-    top: 9px;
-}
+
 .btn-sub{
     width: 48px;
     height: 48px;
@@ -133,6 +126,9 @@ input[type="text"].insert_email::placeholder{
     font-weight: 700;
     font-size: 20px;
     cursor: pointer;
+    position: absolute;
+    left: calc(100% - 93px);
+    top: calc(50% - 24px);
 }
 .btn-sub:active{
     box-shadow: 3px 3px 2px grey;

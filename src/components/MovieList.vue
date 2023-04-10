@@ -4,7 +4,7 @@
             <img class="img_of_movie" :src="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" alt="">
             <span class="movie__title">{{ movie.title }}</span>
             <div class="second__line">
-                <span class="movie__year">{{ movie.release_date.substring(0, 4) }}</span>, 
+                <span class="movie__year">{{ movie.release_date?.substring(0, 4) }}</span>,
                 <span class="movie__year">{{findMovieGenre(movie.genre_ids)}}</span>
             </div>
             <MovieRating :rating="movie.vote_average"></MovieRating>  
